@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    
+    stages {
+        
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                 sh 'npm install'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                 sh 'npm test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                echo 'Deploy step placeholder'
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
